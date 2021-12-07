@@ -445,15 +445,65 @@ Output: false */
 
   // --------------
 
-  function digital_root(n) {
-    var index = n.toString().length - 1   // index = 1
-    var number = n.toString()             // '16'
+  // function digital_root(n) {
+  //   var index = n.toString().length - 1   // index = 1
+  //   var number = n.toString()             // '16'
     
-    while(number.length > 1 ){               // 2 > 1     
-        number = number[index] + number[index + 1]    
-      }
-      console.log(number)
-   }
+  //   while(number.length > 1 ){               // 2 > 1     
+  //       number = number[index] + number[index + 1]    
+  //     }
+  //     console.log(number)
+  //  }
   //  digital_root(16)
 
+ 
+  // ===================================== Array Mesh I ================================
+  // Given two arrays of strings, return a new string that contains every combination of a string from the first array concatenated with a string from the second array.
+
+  // Input: ["a", "b", "c"], ["d", "e", "f", "g"]
+  // Output: ["ad", "ae", "af", "ag", "bd", "be", "bf", "bg", "cd", "ce", "cf", "cg"]
+
+  // function concatenationStation(array1,array2){
+
+  //   let index = 0 
+  //   let concatenation = []
+    
+    
+  //   while(index < array1.length){
+  //     for(let i = 0; i < array2.length; i++){
+  //       concatenation.push(array1[index]+array2[i])
+  //     }
+  //     index += 1
+  //   }
+  //   console.log(concatenation)
+  // }
   
+  // concatenationStation(["a", "b", "c"],["d", "e", "f", "g"])
+
+
+  // ===================================== Array Mesh II ================================
+//   Given ONE array of strings, return a new array that contains every combination of each string with every other string in the array.
+
+// Input: ["a", "b", "c", "d"]
+        // 0
+// Output: ["ab", "ac", "ad", "ba", "bc", "bd", "ca", "cb", "cd", "da", "db", "dc"]
+         // 0+1    0+2   0+3   1+0   1+2   1+3   2+0   2+1   2+3
+
+// if the first index == the second index the loop must skip and increase the index and move on 
+
+
+function concatenationStation2(array){
+  let i = 0
+  let i2 = 0
+  let concat = []
+
+  while(i < array.length){
+    if(i == i2){
+      i2 += 1
+    }else(){
+      concat.push(array[i]+array[i2])
+    }
+
+    i+=1
+  }
+}
