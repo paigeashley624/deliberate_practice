@@ -498,12 +498,28 @@ function concatenationStation2(array){
   let concat = []
 
   while(i < array.length){
-    if(i == i2){
-      i2 += 1
-    }else(){
-      concat.push(array[i]+array[i2])
+    for(let i2 = 0; i2 < array.length; i2+=1){
+      if(i == i2){
+        i2 += 1
+        concat.push(array[i] + array[i2]);
+      }else{
+        concat.push(array[i]+array[i2]);
+      }
     }
-
-    i+=1
   }
+  return concat
+
+  // for(let i = 0; i < array.length; i+=1){
+  //   while(i2 < array.length){
+  //     if(i == i2){
+  //       i2 += 1
+  //       concat.push(array[i] + array[i2]);
+  //     }else{
+  //       concat.push(array[i]+array[i2]);
+  //     }
+  //     i2+=1
+  //   }
+  // }
+  // return concat
 }
+console.log(concatenationStation2(["a", "b", "c", "d"]))
