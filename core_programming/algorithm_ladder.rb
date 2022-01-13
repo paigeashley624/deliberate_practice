@@ -381,24 +381,66 @@
 # find_letters("balloon")
 # find_letters("analysis")
 
-def prevent_distractions(str)
-  noWords = ["anime", "meme", "vines", "roasts","Danny Devito"]
-  i = 0 
+# def prevent_distractions(str)
+#   noWords = ["anime", "meme", "vines", "roasts","Danny Devito"]
+#   i = 0 
 
-  while noWords.length
-    if str.include? noWords[i]
-      p "No!"
-      break
-    else
-      i += 1
-      if i > noWords.length
-        p "Safe watching!"
-      end
-    end
-  end 
+#   while noWords.length
+#     if str.include? noWords[i]
+#       p "No!"
+#       break
+#     else
+#       i += 1
+#       if i > noWords.length
+#         p "Safe watching!"
+#       end
+#     end
+#   end 
 
 
-end
-# prevent_distractions("vines that butter my eggroll")
-prevent_distractions("Hot pictures of Danny DeVito")
+# end
+# # prevent_distractions("vines that butter my eggroll")
+# prevent_distractions("Hot pictures of Danny DeVito")
 # prevent_distractions("How to ace BC Calculus in 5 Easy Steps")
+
+# -------------------------------RNA transcription---------------------
+# Given a DNA strand, return its RNA complement (per RNA transcription).
+
+# Both DNA and RNA strands are a sequence of nucleotides. Here we're representing the sequences with single-letter characters (e.g. a sample strand may look like: "AGCA".)
+
+# Given a string representing a DNA strand, provide its transcribed RNA strand, according to the following pattern:
+
+# G becomes C
+# C becomes G
+# T becomes A
+# A becomes U
+
+# So based on all this, here's a sample input/output:
+
+# Input: 'ACGTGGTCTTAA'
+# Output: 'UGCACCAGAAUU'
+# --
+
+# the hash will consist of key value parings for letters to know what letter equals which. 
+#when the DNA is entered Each letter needs to be mapped and run against the keys and values
+# if the letter matches a letter in the key the value needs to be retuned in a string. This will be done for all letters and once complete the new string will be returned 
+
+
+# Input: 'ACGTGGTCTTAA'
+
+
+
+def rna_transcription(rna)
+  transcription_key = {G:'C', C:'G', T:'A', A:'U'}
+  translation = String.new 
+
+  rna.chars.map do |letter| 
+      translation << transcription_key[letter.to_sym]
+  end 
+   p translation
+
+end 
+
+# p transcription_key[:G]
+
+rna_transcription('ACGTGGTCTTAA')

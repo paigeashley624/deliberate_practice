@@ -522,4 +522,5 @@ function concatenationStation2(array){
   // }
   // return concat
 }
+
 console.log(concatenationStation2(["a", "b", "c", "d"]))
