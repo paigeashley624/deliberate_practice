@@ -1,3 +1,4 @@
+require 'pry'
 # ==================Basic Array ===================
 # Reduce: Sum 
 # Write a function that returns the sum of all numbers in a given array.
@@ -425,22 +426,167 @@
 #when the DNA is entered Each letter needs to be mapped and run against the keys and values
 # if the letter matches a letter in the key the value needs to be retuned in a string. This will be done for all letters and once complete the new string will be returned 
 
+# def rna_transcription(rna)
+#   transcription_key = {G:'C', C:'G', T:'A', A:'U'}
+#   translation = String.new 
 
-# Input: 'ACGTGGTCTTAA'
+#   rna.chars.map do |letter| 
+#       translation << transcription_key[letter.to_sym]
+#   end 
+#    p translation
+# end 
+# rna_transcription('ACGTGGTCTTAA')
+
+# ===========================Popular Post==================================
+# Given an array of hashes that represent a list of social media posts, return a new array that only contains the posts that have at least 1000 likes.
+
+# Input: [
+# {title: 'Me Eating Pizza', submitted_by: "Joelle P.", likes: 1549},
+# {title: 'i never knew how cool i was until now', submitted_by: "Lyndon Johnson", likes: 3},
+# {title: 'best selfie evar!!!', submitted_by: "Patti Q.", likes: 1092},
+# {title: 'Mondays are the worst', submitted_by: "Aunty Em", likes: 644}
+# ]
+
+# Output: [
+# {title: 'Me Eating Pizza', submitted_by: "Joelle P.", likes: 1549},
+# {title: 'best selfie evar!!!', submitted_by: "Patti Q.", likes: 1092},
+# ]
+
+# ---
+# we will map through the post and if the title keys value is greater than or equal to 1000 then that post will display 
+
+# social_post = [{title: 'Me Eating Pizza', submitted_by: "Joelle P.", likes: 1549},
+#   {title: 'i never knew how cool i was until now', submitted_by: "Lyndon Johnson", likes: 3},
+#   {title: 'best selfie evar!!!', submitted_by: "Patti Q.", likes: 1092},
+#   {title: 'Mondays are the worst', submitted_by: "Aunty Em", likes: 644}]
+
+# def popular_post(post)
+#   i = 0 
+#   most_likes = []
+#   while i < post.length
+#     if post[i][:likes] >= 1000
+#       most_likes << post[i]
+#     end
+#     i +=1 
+#   end
+#  return most_likes
+# end
+
+# p popular_post([
+#   {title: 'Me Eating Pizza', submitted_by: "Joelle P.", likes: 1549},
+#   {title: 'i never knew how cool i was until now', submitted_by: "Lyndon Johnson", likes: 3},
+#   {title: 'best selfie evar!!!', submitted_by: "Patti Q.", likes: 1092},
+#   {title: 'Mondays are the worst', submitted_by: "Aunty Em", likes: 644}
+#   ])
+
+# ===========================Merge Sorted Arrays===============================
+# Given two sorted arrays, merge the second array into the first array while ensuring that the first array remains sorted. Do not use any built-in sort methods.
+
+# Input :
+# A : [1, 5, 8]
+# B : [6, 9]
+
+# Modified A : [1, 5, 6, 8, 9]
+
+# def array_sort(input1, input2)
+  # want to use .insert - Inserts the given values before the element with the given index (which may be negative).
+  #.insert(index-to-insert-at,value-to-insert)
+  # modified = input1
+  # index = 0 
+
+  # input2.map do |i| #[6,9]
+  #   while index <= input1.length # 0 < 3 
+  #     if i > modified[index] # 6 < 1 , 6 < 5, 6<8
+  #       index += 1
+  #     else 
+  #       modified.insert(index-=1,i)  #modifed = [1,5,6,8]
+  #     end
+  #     # binding.pry
+  #   end
+
+  # end
+
+  # p modified
+
+# end
+
+# array_sort([1, 5, 8],[6, 9])
+
+# binding.pry
+# require 'set' 
 
 
+# Write a function that determines if an array of n values is valid, where valid means, every digit in the row is unique. And let’s assume that the input array can have blank placeholders represented as ‘.’. See examples be
 
-def rna_transcription(rna)
-  transcription_key = {G:'C', C:'G', T:'A', A:'U'}
-  translation = String.new 
 
-  rna.chars.map do |letter| 
-      translation << transcription_key[letter.to_sym]
-  end 
-   p translation
+# if the value (excluding the '.') at the current index exist at any other position within the array it is not a valid set. 
 
-end 
+# ['5', '.', '.', '3', '.', '7']
 
-# p transcription_key[:G]
+# true = valid 
+# false = not valid 
 
-rna_transcription('ACGTGGTCTTAA')
+require 'set'
+require 'pry'
+
+# def valid?(array)
+#   array.delete('.')
+#   values = Set.new
+
+#   array.each do |value|
+#     if values.include?(value)
+#     return false
+#     else 
+#     values << value
+#     end
+#   end 
+#   return true
+
+# end
+
+
+# def valid?(array)
+#   array.delete('.')
+  
+#   values = Set.new
+
+#   array.map do |value| 
+#     values.include?(value) ? (return false) : values << value
+#   end 
+#   return true
+# end
+
+
+# def valid?(array)
+#   array.delete('.')
+  
+#   values = []
+  
+#   array.each do |value|
+#     return false if values.include?(value)
+    
+#     values << value
+#   end
+  
+#   true
+# end
+
+def valid?(row)
+  return false unless row.is_a?(Array)
+  row.delete('.')
+  row_item_counts = row.each_with_object({}) do |item, acc|
+    acc[item] ? acc[item] += 1 : acc[item] = 1
+  end
+  row_item_counts.reject { |_, value| value <= 1 } == {}
+end
+
+def valid?(row)
+  return false unless row.is_a?(Array)
+  row.delete('.')
+  row.count == row.uniq.count
+end
+
+p valid?(['.']) #--> true
+p valid?(['5', '.', '.', '3', '.', '7']) #--> true
+p valid?(['5', '.', '.', '3', '.', '7', '.', '5'])#--> false
+p valid?('5')#--> false

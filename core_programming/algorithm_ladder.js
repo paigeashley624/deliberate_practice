@@ -492,22 +492,22 @@ Output: false */
 // if the first index == the second index the loop must skip and increase the index and move on 
 
 
-function concatenationStation2(array){
-  let i = 0
-  let i2 = 0
-  let concat = []
+// function concatenationStation2(array){
+//   let i = 0
+//   let i2 = 0
+//   let concat = []
 
-  while(i < array.length){
-    for(let i2 = 0; i2 < array.length; i2+=1){
-      if(i == i2){
-        i2 += 1
-        concat.push(array[i] + array[i2]);
-      }else{
-        concat.push(array[i]+array[i2]);
-      }
-    }
-  }
-  return concat
+//   while(i < array.length){
+//     for(let i2 = 0; i2 < array.length; i2+=1){
+//       if(i == i2){
+//         i2 += 1
+//         concat.push(array[i] + array[i2]);
+//       }else{
+//         concat.push(array[i]+array[i2]);
+//       }
+//     }
+//   }
+//   return concat
 
   // for(let i = 0; i < array.length; i+=1){
   //   while(i2 < array.length){
@@ -521,6 +521,6 @@ function concatenationStation2(array){
   //   }
   // }
   // return concat
-}
+// }
 
-console.log(concatenationStation2(["a", "b", "c", "d"]))
+// console.log(concatenationS/tation2(["a", "b", "c", "d"]))
